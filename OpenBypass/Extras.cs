@@ -95,7 +95,7 @@ namespace OpenBypass
                 scpClient.Upload(new FileInfo(Application.StartupPath + "/Reference/extermina"), "/System/Library/PrivateFrameworks/Settings/GeneralSettingsUI.framework/General.plist");
                 scpClient.Disconnect();
                 sshclient.Disconnect();
-                MessageBox.Show("Device erased!");
+                MessageBox.Show("OTA disabled!");
                 KilliProxy();
             }
         }
