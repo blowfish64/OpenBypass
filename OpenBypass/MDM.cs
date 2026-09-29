@@ -42,14 +42,20 @@ namespace OpenBypass
         }
         public static void StartiProxy()
         {
+            string iproxyPath = Path.Combine(Application.StartupPath, "Required", "iproxy.exe");
+            if (!File.Exists(iproxyPath))
+            {
+                MessageBox.Show("iProxy not found: " + iproxyPath);
+                return;
+            }
+
             try
             {
-
                 new Process
                 {
                     StartInfo =
                         {
-                            FileName = Environment.CurrentDirectory + "/Reference/iproxy.exe",
+                            FileName = iproxyPath,
                             Arguments = "22 44",
                             UseShellExecute = false,
                             RedirectStandardOutput = true,
@@ -60,7 +66,7 @@ namespace OpenBypass
             }
             catch (System.ComponentModel.Win32Exception)
             {
-                MessageBox.Show("iProxy not found! Is your reference folder deleted?");
+                MessageBox.Show("iProxy could not be started: " + iproxyPath);
             }
         }
 
